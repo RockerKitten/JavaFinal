@@ -1,17 +1,22 @@
 package War;
 
 public class Card {
-    private static int value;
-    private static StringBuilder name;
-    private static String suit;
+    private int value;
+    private StringBuilder name;
+    private String suit;
+
+    // defines a card
     public Card(int value, String suit)
     {
-        Card.value = value;
-        Card.suit = suit;
-        Card.setName();
+        this.value = value;
+        this.suit = suit;
+        setName();
     }
 
-private static void setName() {
+    // sets the displayed name of a card, given the value and suit
+public void setName() {
+        int value = this.value;
+        String suit = this.suit;
     StringBuilder name = new StringBuilder();
     if (value >1 && value <11)
     {name.append(value);}
@@ -25,25 +30,27 @@ private static void setName() {
     {name.append("Ace");}
 
     name.append(" of ").append(suit);
-    Card.name = name;
-    }
-    public static void setValue(int value)
-    {
-        Card.value = value;
-    }
-    public static void setSuit(String suit)
-    {
-        Card.suit = suit;
+    this.name = name;
     }
 
-    public static StringBuilder getName()
-    {return name;}
-
-    public static int getValue()
-    {return value;}
-
-    public static void description()
+    public void setValue(int value)
     {
-        System.out.println(Card.getName());
+        this.value = value;
     }
+    public void setSuit(String suit)
+    {
+        this.suit = suit;
+    }
+
+    // returns the name of a card
+    public StringBuilder getName()
+    {return this.name;}
+
+    // returns the value of a card
+    public int getValue()
+    {return this.value;}
+
+    // prints the name of a card
+    public void description()
+    {System.out.println(this.name);}
 }

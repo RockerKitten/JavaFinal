@@ -1,25 +1,55 @@
 package War;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Player {
-    private static List<Card> hand;
-    private static int score;
+    private ArrayList<Card> hand;
+    private int score;
+    private String name;
 
-    public static void describe()
+    // defines player
+    public Player(String name)
     {
+        this.name = name;
+        setHand();
+        this.score = 0;
+    }
 
-    }
-    public static void flip()
+    // prints the player name, score, and the name of every card in the player's hand
+    public void describe()
     {
+        System.out.println(name+" "+getScore());
+        for (Card c : hand)
+        {c.description();}
+    }
 
-    }
-    public static void draw()
-    {
+    // instantiates a new hand
+    public void setHand()
+    {this.hand = new ArrayList<>();}
 
-    }
-    public static int incrementScore(int score)
-    {
-        return 0;
-    }
+    public ArrayList<Card> getHand()
+    {return this.hand;}
+
+    // removes and returns the top card of the players hand
+    public Card flip()
+    {return hand.remove(0);}
+
+    // draws (removes and returns top card of the deck) from the deck and adds the return to the player hand
+    public void draw(Deck deck)
+    {hand.add(deck.draw());}
+
+    // adds one to the player score
+    public void incrementScore()
+    {this.score++;}
+
+    // returns the player's name
+    public String getPlayerName()
+    {return name;}
+
+    public void setPlayerName(String name)
+    {this.name = name;}
+
+    //returns the player's score
+    public int getScore()
+    {return score;}
 }
