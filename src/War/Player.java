@@ -3,7 +3,7 @@ package War;
 import java.util.List;
 
 public class Player {
-    private static List<Cards> hand;
+    private static List<Card> hand;
     private static int score;
 
     public static void describe()
