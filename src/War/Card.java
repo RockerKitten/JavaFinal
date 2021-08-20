@@ -52,5 +52,5 @@ public void setName() {
 
     // prints the name of a card
     public void description()
-    {System.out.println(this.name);}
+    {System.out.print(this.name);}
 }

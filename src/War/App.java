@@ -1,11 +1,23 @@
 package War;
 
+import java.util.Locale;
+
 public class App {
     public static void main(String[] args) {
         Deck deck = new Deck(); //instantiate deck
         Player player1 = new Player("Jim"); //instantiate new players
         Player player2 = new Player("Julie");
         deck.shuffle(); //shuffle deck
+
+        System.out.println("------------------------------------");
+        System.out.println("------------Starting WAR------------");
+        System.out.println("------------------------------------");
+        System.out.println("");
+        System.out.println("PLAYER 1 will be: " + player1.getPlayerName());
+        System.out.println("PLAYER 2 will be: " + player2.getPlayerName());
+        System.out.println("");
+        System.out.println("---LET THE BATTLE BEGIN---");
+        System.out.println("");
 
         // take shuffled deck and deal out to the players
         for (int i = 0; i < 52; i++) {
@@ -20,14 +32,24 @@ public class App {
         //flip and compare the card values
         for (int i = 0; i < 26; i++) {
             Card c = player1.flip();
-            //c.description();
             Card d = player2.flip();
-            //d.description();
 
-            if (c.getValue() > d.getValue())  //increase the score of the player with the higher value
+            //increase the score of the player with the higher value
+            if (c.getValue() > d.getValue())
             {player1.incrementScore();}
             else if (d.getValue() > c.getValue())
             {player2.incrementScore();}
+            else if(c.getValue() == d.getValue())
+            {continue;}
+
+            //describe each hand
+            System.out.println("HAND "+ (i+1));
+            System.out.print("\t" + "PLAYER: " + player2.getPlayerName() + " \tCARD: ");
+            c.description();
+            System.out.println("  \tNEW SCORE: "+ player2.getScore());
+            System.out.print("\t" + "PLAYER: " + player1.getPlayerName() + " \tCARD: ");
+            d.description();
+            System.out.println("  \tNEW SCORE: "+ player1.getScore());
         }
 
         // compare scores display who wins
